@@ -5,14 +5,16 @@
 
 struct TemperatureData {
 	public:
-		TemperatureData();
-		TemperatureData(std::string id, int year, int month, double temperature);
-		virtual ~TemperatureData();
-		bool operator<(const TemperatureData& b);
 		string id;
 		int year;
 		int month;
 		double temperature;
+
+		TemperatureData();
+		TemperatureData(std::string id, int year, int month, double temperature);
+		virtual ~TemperatureData();
+		bool operator<(const TemperatureData& b);
+		
 };
 
 # endif
