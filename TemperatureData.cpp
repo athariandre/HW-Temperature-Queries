@@ -28,5 +28,6 @@ bool TemperatureData::operator<(const TemperatureData& b) {
 		return (b.month > this->month);
 	}
 	return false;
+	
 }
 
