@@ -37,7 +37,7 @@ LinkedList& LinkedList::operator=(const LinkedList& source) {
 		if (source.head == nullptr) {
         head = nullptr;
         tail = nullptr;
-        return;
+        return *this;
     }
 	
     head = source.head;
