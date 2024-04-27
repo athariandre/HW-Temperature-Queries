@@ -30,7 +30,11 @@ LinkedList::~LinkedList() {
 }
 
 LinkedList::LinkedList(const LinkedList& source) /* TODO */ {
-    if (source.head == nullptr) {
+    *this = source;
+}
+
+LinkedList& LinkedList::operator=(const LinkedList& source) {
+		if (source.head == nullptr) {
         head = nullptr;
         tail = nullptr;
         return;
@@ -49,10 +53,8 @@ LinkedList::LinkedList(const LinkedList& source) /* TODO */ {
     }
     
     tail = temp;
-}
-
-LinkedList& LinkedList::operator=(const LinkedList& source) {
-	// TODO: implement this function
+	
+	return *this;
 }
 
 void LinkedList::insert(string location, int year, int month, double temperature) {
