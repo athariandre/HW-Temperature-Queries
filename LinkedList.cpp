@@ -30,7 +30,7 @@ void LinkedList::clear() {
 }
 
 Node* LinkedList::getHead() const {
-	// TODO: implement this function, it will be used to help grade other functions
+	return head;
 }
 
 string LinkedList::print() const {
