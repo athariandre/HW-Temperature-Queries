@@ -5,7 +5,7 @@
 
 struct TemperatureData {
 	public:
-		string id;
+		std::string id;
 		int year;
 		int month;
 		double temperature;
@@ -14,7 +14,6 @@ struct TemperatureData {
 		TemperatureData(std::string id, int year, int month, double temperature);
 		virtual ~TemperatureData();
 		bool operator<(const TemperatureData& b);
-		
 };
 
 # endif
