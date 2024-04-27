@@ -4,11 +4,13 @@
 using std::string;
 
 Node::Node() /* TODO */ {
-	// TODO: implement this function
+	this->data = TemperatureData();
+	next = nullptr;
 }
 
 Node::Node(string id, int year, int month, double temperature) /* TODO */ {
-	// TODO: implement this function
+	this->data = TemperatureData(id, year, month, temperature);
+	next = nullptr;
 }
 
 bool Node::operator<(const Node& b) {	
