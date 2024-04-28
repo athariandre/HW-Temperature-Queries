@@ -112,7 +112,7 @@ string LinkedList::print() const {
 	string outputString;
 
 	if(head == nullptr){
-		return;
+		return "";
 	}
 
 	Node* temp = head;
