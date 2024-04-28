@@ -34,7 +34,7 @@ LinkedList::LinkedList(const LinkedList& source) /* TODO */ {
 }
 
 LinkedList& LinkedList::operator=(const LinkedList& source) {
-		if (source.head == nullptr) {
+	if (source.head == nullptr) {
         head = nullptr;
         tail = nullptr;
         return *this;
@@ -111,7 +111,33 @@ Node* LinkedList::getHead() const {
 string LinkedList::print() const {
 	string outputString;
 
-	// TODO: implement this function
+	if(head == nullptr){
+		return;
+	}
+
+	Node* temp = head;
+	Node* tempnext = head->next;
+	string concatString;
+	while(tempnext != nullptr){
+		concatString = "";
+		concatString += temp->data.id + " " ;
+		concatString += std::to_string(temp->data.year) + " ";
+		concatString += std::to_string(temp->data.month) + " ";
+		concatString += std::to_string(temp->data.temperature) + "\n";
+
+		outputString += concatString;
+
+		temp = tempnext;
+		tempnext = tempnext->next;
+	}
+
+	concatString = "";
+	concatString += temp->data.id + " " ;
+	concatString += std::to_string(temp->data.year) + " ";
+	concatString += std::to_string(temp->data.month) + " ";
+	concatString += std::to_string(temp->data.temperature) + "\n";
+
+	outputString += concatString;
 
 	return outputString;
 }

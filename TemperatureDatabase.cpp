@@ -1,13 +1,16 @@
 # include "TemperatureDatabase.h"
 # include <fstream>
 
-using std::cout, std::endl, std::string, std::ofstream;
+using std::cout, std::endl, std::string, std::ofstream, std::ifstream;
 
 TemperatureDatabase::TemperatureDatabase() {}
 TemperatureDatabase::~TemperatureDatabase() {}
 
 void TemperatureDatabase::loadData(const string& filename) {
 	// TODO: implement this function
+	ifstream is(filename);
+
+	
 }
 
 void TemperatureDatabase::outputData(const string& filename) {
