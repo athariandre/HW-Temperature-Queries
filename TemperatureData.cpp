@@ -19,7 +19,7 @@ TemperatureData::~TemperatureData() {}
 
 bool TemperatureData::operator<(const TemperatureData& b) {
 	if(this->id != b.id){
-		return( (this->id).compare(b.id) > 0 );
+		return(b.id > this->id);
 	}
 	else if(this->year != b.year){
 		return (b.year > this->year);
