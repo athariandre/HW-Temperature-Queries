@@ -2,6 +2,7 @@
 # include <string>
 # include "LinkedList.h"
 # include "Node.h"
+# include <sstream>
 
 using std::string, std::ostream;
 
@@ -11,22 +12,7 @@ LinkedList::LinkedList() /* TODO */ {
 }
 
 LinkedList::~LinkedList() {
-	if(head == nullptr){
-		return;
-	}
-	Node* temp = head;
-	Node* tempnext = temp->next;
-	while(tempnext != nullptr){
-		delete temp;
-		temp = tempnext;
-		tempnext = tempnext->next;
-	}
-	delete temp;
-	delete tempnext;
-	delete head;
-	delete tail;
-	head = nullptr;
-	tail = nullptr;
+	this->clear();
 }
 
 LinkedList::LinkedList(const LinkedList& source) /* TODO */ {
@@ -65,7 +51,6 @@ void LinkedList::insert(string location, int year, int month, double temperature
 		tail = newnode;
 		return;
 	}
-
 	
 	Node* current = head;
 	Node* prev = head;
@@ -109,35 +94,26 @@ Node* LinkedList::getHead() const {
 string LinkedList::print() const {
 	string outputString;
 
+	std::ostringstream outputOSS;
+
 	if(head == nullptr){
 		return "";
 	}
 
 	Node* temp = head;
-	Node* tempnext = head->next;
 	string concatString;
-	while(tempnext != nullptr){
-		concatString = "";
-		concatString += temp->data.id + " " ;
-		concatString += std::to_string(temp->data.year) + " ";
-		concatString += std::to_string(temp->data.month) + " ";
-		concatString += std::to_string(temp->data.temperature) + "\n";
 
-		outputString += concatString;
+	while(temp != nullptr){
+	
+		outputOSS << temp->data.id << " " ;
+		outputOSS << temp->data.year << " ";
+		outputOSS << temp->data.month << " ";
+		outputOSS << temp->data.temperature << "\n";
 
-		temp = tempnext;
-		tempnext = tempnext->next;
+		temp = temp->next;
 	}
 
-	concatString = "";
-	concatString += temp->data.id + " " ;
-	concatString += std::to_string(temp->data.year) + " ";
-	concatString += std::to_string(temp->data.month) + " ";
-	concatString += std::to_string(temp->data.temperature) + "\n";
-
-	outputString += concatString;
-
-	return outputString;
+	return outputOSS.str();
 }
 
 ostream& operator<<(ostream& os, const LinkedList& ll) {
