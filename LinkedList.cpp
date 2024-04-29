@@ -83,7 +83,7 @@ void LinkedList::clear() {
 	}
 	Node* temp = head;
 	while(temp != nullptr){
-		Node* tempnext = head->next;
+		Node* tempnext = temp->next;
 		delete temp;
 		temp = tempnext;
 	}
