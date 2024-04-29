@@ -12,43 +12,35 @@ void TemperatureDatabase::loadData(const string& filename) {
 	
 	if(!is.is_open()){
 		cout << "Error: Unable to open " << filename << endl;
-		return;
 	}
 
 	string line = "";
 	int cnt = 0;
 	while(getline(is, line)){
-		stringstream ss(line);
 
 		string id = "";
 		int year,month = 0;
 		double temp = 0.0;
 
-		ss >> id >> year >> month >> temp;
+		is >> id >> year >> month >> temp;
 
 
-		if(ss.bad()){
+		if(is.fail()){
 			cout << "Error: Other invalid input" << endl;
-			continue;
 		}
+		if(temp < -50 || temp > 50){
+			cout << "Error: Invalid temperature " << temp << endl;
+		}
+		if(year < 1800 || year > 2024){
+			cout << "Error: Invalid year " << year << endl;
 
-		else{
-			if(temp < -50 || temp > 50){
-				cout << "Error: Invalid temperature " << temp << endl;
-				continue;
-			}
-			if(year < 1800 || year > 2024){
-				cout << "Error: Invalid year " << year << endl;
-				continue;
-			}
-			if(month < 1 || month > 12){
-				cout << "Error: Invalid month " << month << endl;
-				continue;
-			}
 		}
+		if(month < 1 || month > 12){
+			cout << "Error: Invalid month " << month << endl;
+		}
+		
 
 		records.insert(id, year, month, temp);
-		
 	}
 }
 
