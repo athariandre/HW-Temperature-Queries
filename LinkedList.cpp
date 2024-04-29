@@ -52,22 +52,29 @@ void LinkedList::insert(string location, int year, int month, double temperature
 		return;
 	}
 	
+
+	if(*newnode < *this->head){
+		newnode->next = head;
+		head = newnode;
+		return;
+	}
+
+	if(*tail < *newnode){
+		tail->next = newnode;
+		tail = newnode;
+		return;
+	}
+
 	Node* current = head;
 	Node* prev = head;
 
-	while(current != nullptr && current < newnode){
+	while(current != nullptr && *current < *newnode){
 		prev = current;
 		current = current->next;
 	}
+	newnode->next = current;
+	prev->next = newnode;
 
-	if(current == head){
-		newnode->next = head;
-		head = newnode;
-	}
-	else{
-		newnode->next = current;
-		prev->next = newnode;
-	}
 }
 
 void LinkedList::clear() {
@@ -75,14 +82,11 @@ void LinkedList::clear() {
 		return;
 	}
 	Node* temp = head;
-	Node* tempnext = head->next;
-	while(tempnext != nullptr){
+	while(temp != nullptr){
+		Node* tempnext = head->next;
 		delete temp;
 		temp = tempnext;
-		tempnext = tempnext->next;
 	}
-	delete temp;
-	delete tempnext;
 	head = nullptr;
 	tail = nullptr;
 }
@@ -92,8 +96,6 @@ Node* LinkedList::getHead() const {
 }
 
 string LinkedList::print() const {
-
-
 	std::ostringstream outputOSS;
 	Node* temp = head;
 	while(temp != nullptr){
