@@ -29,7 +29,7 @@ void TemperatureDatabase::loadData(const string& filename) {
 			
 			s >> id >> yrstr >> monstr >> tempstr;
 
-			if(!s.good()){
+			if(!s.good() || line == ""){
 				break;
 			}
 
