@@ -8,57 +8,49 @@ TemperatureDatabase::TemperatureDatabase() {}
 TemperatureDatabase::~TemperatureDatabase() {}
 
 void TemperatureDatabase::loadData(const string& filename) {
-	// TODO: implement this function
-	ifstream is(filename);
+	// ifstream is(filename);
+	
+	// if(!is.is_open()){
+	// 	cout << "Error: Unable to open " << filename << endl;
+	// 	return;
+	// }
 
-	if(!is.is_open()){
-		cout << "Error: Unable to open " << filename << endl;
-		return;
-	}
-	string line;
+	// string line = "";
+	// int cnt = 0;
+	// while(getline(is, line)){
+	// 	stringstream ss(line);
 
-	while(getline(is, line)){
-		if(line == ""){
-			break;
-		}
-		try{
-			stringstream s(line);
-			
+	// 	string id = "";
+	// 	int year,month = 0;
+	// 	double temp = 0.0;
 
-			string id, yrstr, monstr, tempstr;
-			int year = 0;
-			int month = 0;
-			double temperature = 0.0;
-			
-			s >> id >> yrstr >> monstr >> tempstr;
+	// 	ss >> id >> year >> month >> temp;
 
-			if(!s.good() || line == ""){
-				break;
-			}
+	// 	cout << "id: " << id << "\nyear: " << year << "\nmonth: " << month << "\ntemperature: " << temp << endl;
 
-			cout << "id: " << id << "\nyrstr: " << yrstr << "\nmonstr: " << monstr << "\ntempstr: " << tempstr << endl;
+	// 	if(ss.bad()){
+	// 		cout << "Error: Other invalid input" << endl;
+	// 		continue;
+	// 	}
 
-			year = std::stoi(yrstr);
-			month = std::stoi(monstr);
-			temperature = std::stod(tempstr);
+	// 	else{
+	// 		if(temp < -50 || temp > 50){
+	// 			cout << "Error: Invalid temperature " << temp << endl;
+	// 			continue;
+	// 		}
+	// 		if(year < 1800 || year > 2024){
+	// 			cout << "Error: Invalid year " << year << endl;
+	// 			continue;
+	// 		}
+	// 		if(month < 1 || month > 12){
+	// 			cout << "Error: Invalid month " << month << endl;
+	// 			continue;
+	// 		}
+	// 	}
 
-			if(temperature < -50 || temperature > 50){
-				cout << "Error: Invalid temperature " << std::to_string(temperature) << endl;
-			}
-			if(year < 1800 || year > 2024){
-				cout << "Error: Invalid year " << std::to_string(year) << endl;
-			}
-			if(month < 1 || month > 12){
-				cout << "Error: Invalid month " << std::to_string(month) << endl;
-			}
-			cout << "inserted!" << endl;
-			records.insert(id, year, month, temperature);
-		}
-		catch(...){
-			cout << "Error: Other invalid input." << endl;
-			return;
-		}
-	}
+	// 	records.insert(id, year, month, temp);
+		
+	// }
 }
 
 void TemperatureDatabase::outputData(const string& filename) {

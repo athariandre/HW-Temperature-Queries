@@ -67,27 +67,43 @@ void LinkedList::insert(string location, int year, int month, double temperature
 	}
 
 	
+	Node* current = head;
+	Node* prev = head;
 
-	Node* temp = head;
-	Node* tempnext = head->next;
+	while(current != nullptr && current < newnode){
+		prev = current;
+		current = current->next;
+	}
 
-	if(newnode < head){
-		newnode->next = temp;
+	if(current == head){
+		newnode->next = head;
 		head = newnode;
-		return;
+	}
+	else{
+		prev->next = newnode;
+		newnode->next = current;
 	}
 
-	while(tempnext != nullptr){
-		if(newnode < tempnext){
-			temp->next = newnode;
-			newnode->next = tempnext;
-			return;
-		}
-		temp = tempnext;
-		tempnext = tempnext->next;
-	}
-	tail->next = newnode;
-	tail = newnode;
+
+
+
+
+	// Node* temp = head;
+	// Node* tempnext = head->next;
+
+
+
+	// while(tempnext != nullptr){
+	// 	if(newnode < tempnext){
+	// 		temp->next = newnode;
+	// 		newnode->next = tempnext;
+	// 		return;
+	// 	}
+	// 	temp = tempnext;
+	// 	tempnext = tempnext->next;
+	// }
+	// tail->next = newnode;
+	// tail = newnode;
 }
 
 void LinkedList::clear() {
