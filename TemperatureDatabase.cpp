@@ -25,7 +25,7 @@ void TemperatureDatabase::loadData(const string& filename) {
 		is >> id >> year >> month >> temp;
 
 
-		if(is.fail()){
+		if(is.fail() || temp == -99.99){
 			cout << "Error: Other invalid input" << endl;
 		}
 		if(temp < -50 || temp > 50){
