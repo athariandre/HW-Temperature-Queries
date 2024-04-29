@@ -92,23 +92,12 @@ Node* LinkedList::getHead() const {
 }
 
 string LinkedList::print() const {
-	string outputString;
+
 
 	std::ostringstream outputOSS;
-
-	if(head == nullptr){
-		return "";
-	}
-
 	Node* temp = head;
-	string concatString;
-
 	while(temp != nullptr){
-	
-		outputOSS << temp->data.id << " " ;
-		outputOSS << temp->data.year << " ";
-		outputOSS << temp->data.month << " ";
-		outputOSS << temp->data.temperature << "\n";
+		outputOSS << temp->data.id << " " << temp->data.year << " " << temp->data.month << " " << temp->data.temperature << "\n";
 
 		temp = temp->next;
 	}
