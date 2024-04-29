@@ -18,9 +18,12 @@ void TemperatureDatabase::loadData(const string& filename) {
 	string line;
 
 	while(getline(is, line)){
+		if(line == ""){
+			break;
+		}
 		try{
-
 			stringstream s(line);
+			
 
 			string id, yrstr, monstr, tempstr;
 			int year = 0;
@@ -41,15 +44,12 @@ void TemperatureDatabase::loadData(const string& filename) {
 
 			if(temperature < -50 || temperature > 50){
 				cout << "Error: Invalid temperature " << std::to_string(temperature) << endl;
-				return;
 			}
 			if(year < 1800 || year > 2024){
 				cout << "Error: Invalid year " << std::to_string(year) << endl;
-				return;
 			}
 			if(month < 1 || month > 12){
 				cout << "Error: Invalid month " << std::to_string(month) << endl;
-				return;
 			}
 			cout << "inserted!" << endl;
 			records.insert(id, year, month, temperature);
